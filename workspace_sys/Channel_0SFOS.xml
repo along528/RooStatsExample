@@ -1,0 +1,341 @@
+<!--
+    The single channel config file for RSG->hh->bbbb
+    only taking into account qcd and ttbar and the qcd shape syst
+
+    NormalizeByTheory: scale by the luminosity and its error (we use Lumi=1.0 and its rel. err)
+
+    Note: Config.dtd needs to be accessible.  It can be found in ROOT release area.  
+    The file system path is relative to location of this XML file, not the executable.
+-->
+
+<!DOCTYPE Channel  SYSTEM 'HistFactorySchema.dtd'>
+
+  <!-- There is some weird crash if I put a number in the Channel Name (e.g. 1SFOS) -->
+  <Channel Name="ZeroSFOS" InputFile="Input_0SFOS.root">
+    <!-- Data is set to background -->
+    <Data HistoPath="SignalPlusBackground_MCFake/" HistoName="Central" />  
+
+
+    <!-- Set the StatError type to Poisson.  Can also be Gaussian -->
+    <StatErrorConfig RelErrorThreshold="0.01" ConstraintType="Poisson" />
+
+    <Sample Name="SIGNAL" HistoPath="Signal/" HistoName="Central" NormalizeByTheory="True" >
+      <StatError Activate="True" />
+      <!--<OverallSys Name="b_tag_sf" High="1.26" Low="0.74"/>-->
+      <!-- Should this be set so that Const="True" ? -->
+      <NormFactor Name="NormFactorToPrediction" Val="1." Low="-15." High="30." Const="True" />
+      <!-- Charged averaged PDF unceratiny +1.7% - 2.8%-->
+      <OverallSys Name="PDF" Low=".972" High="1.017" />
+      <!-- Renomralization and Factorization Scale uncertainty +/- 2.6 % -->
+      <OverallSys Name="RenormFacScale" Low=".974" High="1.026" />
+      
+      <HistoSys Name="ChargeMisID" HistoNameHigh="ChargeMisIDHighError" HistoNameLow="ChargeMisIDLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="ElectronEnergyScaleLowPt" HistoNameHigh="ElectronEnergyScaleLowPtHighError" HistoNameLow="ElectronEnergyScaleLowPtLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="ElectronEnergyScaleMaterial" HistoNameHigh="ElectronEnergyScaleMaterialHighError" HistoNameLow="ElectronEnergyScaleMaterialLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="ElectronEnergyScalePresampler" HistoNameHigh="ElectronEnergyScalePresamplerHighError" HistoNameLow="ElectronEnergyScalePresamplerLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="ElectronEnergyScaleZeeGen" HistoNameHigh="ElectronEnergyScaleZeeGenHighError" HistoNameLow="ElectronEnergyScaleZeeGenLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="ElectronEnergyScaleZeeMeth" HistoNameHigh="ElectronEnergyScaleZeeMethHighError" HistoNameLow="ElectronEnergyScaleZeeMethLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="ElectronEnergyScaleZeeStat" HistoNameHigh="ElectronEnergyScaleZeeStatHighError" HistoNameLow="ElectronEnergyScaleZeeStatLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="ElectronEnergySmearing" HistoNameHigh="ElectronEnergySmearingHighError" HistoNameLow="ElectronEnergySmearingLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="ElectronIdentificationEfficiency" HistoNameHigh="ElectronIdentificationEfficiencyHighError" HistoNameLow="ElectronIdentificationEfficiencyLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="ElectronRecoEfficiency" HistoNameHigh="ElectronRecoEfficiencyHighError" HistoNameLow="ElectronRecoEfficiencyLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="ElectronTriggerSF" HistoNameHigh="ElectronTriggerSFHighError" HistoNameLow="ElectronTriggerSFLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="JetBTagJES" HistoNameHigh="JetBTagJESHighError" HistoNameLow="JetBTagJESLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="JetBTagSFEV1" HistoNameHigh="JetBTagSFEV1HighError" HistoNameLow="JetBTagSFEV1LowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="JetBTagSFEV2" HistoNameHigh="JetBTagSFEV2HighError" HistoNameLow="JetBTagSFEV2LowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="JetBTagSFEV3" HistoNameHigh="JetBTagSFEV3HighError" HistoNameLow="JetBTagSFEV3LowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="JetBTagSFEV4" HistoNameHigh="JetBTagSFEV4HighError" HistoNameLow="JetBTagSFEV4LowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="JetBTagSFEV5" HistoNameHigh="JetBTagSFEV5HighError" HistoNameLow="JetBTagSFEV5LowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="JetBTagSFEV6" HistoNameHigh="JetBTagSFEV6HighError" HistoNameLow="JetBTagSFEV6LowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="JetCTTagSF" HistoNameHigh="JetCTTagSFHighError" HistoNameLow="JetCTTagSFLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_1" HistoNameHigh="JetEnergyScaleEffectiveNP_1HighError" HistoNameLow="JetEnergyScaleEffectiveNP_1LowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_2" HistoNameHigh="JetEnergyScaleEffectiveNP_2HighError" HistoNameLow="JetEnergyScaleEffectiveNP_2LowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_3" HistoNameHigh="JetEnergyScaleEffectiveNP_3HighError" HistoNameLow="JetEnergyScaleEffectiveNP_3LowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_4" HistoNameHigh="JetEnergyScaleEffectiveNP_4HighError" HistoNameLow="JetEnergyScaleEffectiveNP_4LowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_5" HistoNameHigh="JetEnergyScaleEffectiveNP_5HighError" HistoNameLow="JetEnergyScaleEffectiveNP_5LowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_6restTerm" HistoNameHigh="JetEnergyScaleEffectiveNP_6restTermHighError" HistoNameLow="JetEnergyScaleEffectiveNP_6restTermLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="JetEnergyScaleEtaIntercalibration_Modelling" HistoNameHigh="JetEnergyScaleEtaIntercalibration_ModellingHighError" HistoNameLow="JetEnergyScaleEtaIntercalibration_ModellingLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="JetEnergyScaleEtaIntercalibration_StatAndMethod" HistoNameHigh="JetEnergyScaleEtaIntercalibration_StatAndMethodHighError" HistoNameLow="JetEnergyScaleEtaIntercalibration_StatAndMethodLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="JetEnergyScaleRelativeNonClosure_Pythia8" HistoNameHigh="JetEnergyScaleRelativeNonClosure_Pythia8HighError" HistoNameLow="JetEnergyScaleRelativeNonClosure_Pythia8LowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="JetEnergyScaleSingleParticle_HighPt" HistoNameHigh="JetEnergyScaleSingleParticle_HighPtHighError" HistoNameLow="JetEnergyScaleSingleParticle_HighPtLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="JetFlavorComp" HistoNameHigh="JetFlavorCompHighError" HistoNameLow="JetFlavorCompLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="JetFlavorResponse" HistoNameHigh="JetFlavorResponseHighError" HistoNameLow="JetFlavorResponseLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="JetMisTagSF" HistoNameHigh="JetMisTagSFHighError" HistoNameLow="JetMisTagSFLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="JetPileupMu" HistoNameHigh="JetPileupMuHighError" HistoNameLow="JetPileupMuLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="JetPileupNPV" HistoNameHigh="JetPileupNPVHighError" HistoNameLow="JetPileupNPVLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="JetPileupPt" HistoNameHigh="JetPileupPtHighError" HistoNameLow="JetPileupPtLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="JetPileupRhoTopo" HistoNameHigh="JetPileupRhoTopoHighError" HistoNameLow="JetPileupRhoTopoLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="JetResolution" HistoNameHigh="JetResolutionHighError" HistoNameLow="JetResolutionLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="JetVertexFraction" HistoNameHigh="JetVertexFractionHighError" HistoNameLow="JetVertexFractionLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="METSoftTermsResolution" HistoNameHigh="METSoftTermsResolutionHighError" HistoNameLow="METSoftTermsResolutionLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="METSoftTermsScale" HistoNameHigh="METSoftTermsScaleHighError" HistoNameLow="METSoftTermsScaleLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="MuonEfficiency" HistoNameHigh="MuonEfficiencyHighError" HistoNameLow="MuonEfficiencyLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="MuonMomentumID" HistoNameHigh="MuonMomentumIDHighError" HistoNameLow="MuonMomentumIDLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="MuonMomentumMS" HistoNameHigh="MuonMomentumMSHighError" HistoNameLow="MuonMomentumMSLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="MuonMomentumScale" HistoNameHigh="MuonMomentumScaleHighError" HistoNameLow="MuonMomentumScaleLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+      <HistoSys Name="MuonTriggerSF" HistoNameHigh="MuonTriggerSFHighError" HistoNameLow="MuonTriggerSFLowError" HistoPathHigh="Signal/" HistoPathLow="Signal/" />
+
+    </Sample>
+
+    <Sample Name="WZ" HistoPath="WZ/" NormalizeByTheory="True" HistoName="Central">
+      <StatError Activate="True" />
+      <!-- 1.13 +/- .05 K-factor taken from WZ support note ATL-COM-PHYS-2014-144 Fig.80 -->
+      <!-- <NormFactor Name="WZKFac" Val="1.13" Low=".98" High="1.18" Const="True" /> -->
+      <OverallSys Name="WZKFactor" Low=".95" High="1.05" />
+      
+      <HistoSys Name="ChargeMisID" HistoNameHigh="ChargeMisIDHighError" HistoNameLow="ChargeMisIDLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="ElectronEnergyScaleLowPt" HistoNameHigh="ElectronEnergyScaleLowPtHighError" HistoNameLow="ElectronEnergyScaleLowPtLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="ElectronEnergyScaleMaterial" HistoNameHigh="ElectronEnergyScaleMaterialHighError" HistoNameLow="ElectronEnergyScaleMaterialLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="ElectronEnergyScalePresampler" HistoNameHigh="ElectronEnergyScalePresamplerHighError" HistoNameLow="ElectronEnergyScalePresamplerLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="ElectronEnergyScaleZeeGen" HistoNameHigh="ElectronEnergyScaleZeeGenHighError" HistoNameLow="ElectronEnergyScaleZeeGenLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="ElectronEnergyScaleZeeMeth" HistoNameHigh="ElectronEnergyScaleZeeMethHighError" HistoNameLow="ElectronEnergyScaleZeeMethLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="ElectronEnergyScaleZeeStat" HistoNameHigh="ElectronEnergyScaleZeeStatHighError" HistoNameLow="ElectronEnergyScaleZeeStatLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="ElectronEnergySmearing" HistoNameHigh="ElectronEnergySmearingHighError" HistoNameLow="ElectronEnergySmearingLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="ElectronIdentificationEfficiency" HistoNameHigh="ElectronIdentificationEfficiencyHighError" HistoNameLow="ElectronIdentificationEfficiencyLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="ElectronRecoEfficiency" HistoNameHigh="ElectronRecoEfficiencyHighError" HistoNameLow="ElectronRecoEfficiencyLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="ElectronTriggerSF" HistoNameHigh="ElectronTriggerSFHighError" HistoNameLow="ElectronTriggerSFLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="JetBTagJES" HistoNameHigh="JetBTagJESHighError" HistoNameLow="JetBTagJESLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="JetBTagSFEV1" HistoNameHigh="JetBTagSFEV1HighError" HistoNameLow="JetBTagSFEV1LowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="JetBTagSFEV2" HistoNameHigh="JetBTagSFEV2HighError" HistoNameLow="JetBTagSFEV2LowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="JetBTagSFEV3" HistoNameHigh="JetBTagSFEV3HighError" HistoNameLow="JetBTagSFEV3LowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="JetBTagSFEV4" HistoNameHigh="JetBTagSFEV4HighError" HistoNameLow="JetBTagSFEV4LowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="JetBTagSFEV5" HistoNameHigh="JetBTagSFEV5HighError" HistoNameLow="JetBTagSFEV5LowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="JetBTagSFEV6" HistoNameHigh="JetBTagSFEV6HighError" HistoNameLow="JetBTagSFEV6LowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="JetCTTagSF" HistoNameHigh="JetCTTagSFHighError" HistoNameLow="JetCTTagSFLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_1" HistoNameHigh="JetEnergyScaleEffectiveNP_1HighError" HistoNameLow="JetEnergyScaleEffectiveNP_1LowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_2" HistoNameHigh="JetEnergyScaleEffectiveNP_2HighError" HistoNameLow="JetEnergyScaleEffectiveNP_2LowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_3" HistoNameHigh="JetEnergyScaleEffectiveNP_3HighError" HistoNameLow="JetEnergyScaleEffectiveNP_3LowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_4" HistoNameHigh="JetEnergyScaleEffectiveNP_4HighError" HistoNameLow="JetEnergyScaleEffectiveNP_4LowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_5" HistoNameHigh="JetEnergyScaleEffectiveNP_5HighError" HistoNameLow="JetEnergyScaleEffectiveNP_5LowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_6restTerm" HistoNameHigh="JetEnergyScaleEffectiveNP_6restTermHighError" HistoNameLow="JetEnergyScaleEffectiveNP_6restTermLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="JetEnergyScaleEtaIntercalibration_Modelling" HistoNameHigh="JetEnergyScaleEtaIntercalibration_ModellingHighError" HistoNameLow="JetEnergyScaleEtaIntercalibration_ModellingLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="JetEnergyScaleEtaIntercalibration_StatAndMethod" HistoNameHigh="JetEnergyScaleEtaIntercalibration_StatAndMethodHighError" HistoNameLow="JetEnergyScaleEtaIntercalibration_StatAndMethodLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="JetEnergyScaleRelativeNonClosure_Pythia8" HistoNameHigh="JetEnergyScaleRelativeNonClosure_Pythia8HighError" HistoNameLow="JetEnergyScaleRelativeNonClosure_Pythia8LowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="JetEnergyScaleSingleParticle_HighPt" HistoNameHigh="JetEnergyScaleSingleParticle_HighPtHighError" HistoNameLow="JetEnergyScaleSingleParticle_HighPtLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="JetFlavorComp" HistoNameHigh="JetFlavorCompHighError" HistoNameLow="JetFlavorCompLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="JetFlavorResponse" HistoNameHigh="JetFlavorResponseHighError" HistoNameLow="JetFlavorResponseLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="JetMisTagSF" HistoNameHigh="JetMisTagSFHighError" HistoNameLow="JetMisTagSFLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="JetPileupMu" HistoNameHigh="JetPileupMuHighError" HistoNameLow="JetPileupMuLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="JetPileupNPV" HistoNameHigh="JetPileupNPVHighError" HistoNameLow="JetPileupNPVLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="JetPileupPt" HistoNameHigh="JetPileupPtHighError" HistoNameLow="JetPileupPtLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="JetPileupRhoTopo" HistoNameHigh="JetPileupRhoTopoHighError" HistoNameLow="JetPileupRhoTopoLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="JetResolution" HistoNameHigh="JetResolutionHighError" HistoNameLow="JetResolutionLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="JetVertexFraction" HistoNameHigh="JetVertexFractionHighError" HistoNameLow="JetVertexFractionLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="METSoftTermsResolution" HistoNameHigh="METSoftTermsResolutionHighError" HistoNameLow="METSoftTermsResolutionLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="METSoftTermsScale" HistoNameHigh="METSoftTermsScaleHighError" HistoNameLow="METSoftTermsScaleLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="MuonEfficiency" HistoNameHigh="MuonEfficiencyHighError" HistoNameLow="MuonEfficiencyLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="MuonMomentumID" HistoNameHigh="MuonMomentumIDHighError" HistoNameLow="MuonMomentumIDLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="MuonMomentumMS" HistoNameHigh="MuonMomentumMSHighError" HistoNameLow="MuonMomentumMSLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="MuonMomentumScale" HistoNameHigh="MuonMomentumScaleHighError" HistoNameLow="MuonMomentumScaleLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+      <HistoSys Name="MuonTriggerSF" HistoNameHigh="MuonTriggerSFHighError" HistoNameLow="MuonTriggerSFLowError" HistoPathHigh="WZ/" HistoPathLow="WZ/" />
+
+    </Sample>
+
+    <Sample Name="ZZ" HistoPath="ZZ/" NormalizeByTheory="True" HistoName="Central">
+      <StatError Activate="True" />
+      <!-- 1.05 +/- 7% k-factor taken from https://indico.cern.ch/event/321782/contribution/2/material/slides/0.pdf slide 4. for powheg ZZ samples -->
+      <!--<NormFactor Name="bkgdNorm" Val="1." Low="1." High="1."  />-->
+      <OverallSys Name="ZZKFactor" Low=".93" High="1.07" />
+      
+      <HistoSys Name="ChargeMisID" HistoNameHigh="ChargeMisIDHighError" HistoNameLow="ChargeMisIDLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="ElectronEnergyScaleLowPt" HistoNameHigh="ElectronEnergyScaleLowPtHighError" HistoNameLow="ElectronEnergyScaleLowPtLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="ElectronEnergyScaleMaterial" HistoNameHigh="ElectronEnergyScaleMaterialHighError" HistoNameLow="ElectronEnergyScaleMaterialLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="ElectronEnergyScalePresampler" HistoNameHigh="ElectronEnergyScalePresamplerHighError" HistoNameLow="ElectronEnergyScalePresamplerLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="ElectronEnergyScaleZeeGen" HistoNameHigh="ElectronEnergyScaleZeeGenHighError" HistoNameLow="ElectronEnergyScaleZeeGenLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="ElectronEnergyScaleZeeMeth" HistoNameHigh="ElectronEnergyScaleZeeMethHighError" HistoNameLow="ElectronEnergyScaleZeeMethLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="ElectronEnergyScaleZeeStat" HistoNameHigh="ElectronEnergyScaleZeeStatHighError" HistoNameLow="ElectronEnergyScaleZeeStatLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="ElectronEnergySmearing" HistoNameHigh="ElectronEnergySmearingHighError" HistoNameLow="ElectronEnergySmearingLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="ElectronIdentificationEfficiency" HistoNameHigh="ElectronIdentificationEfficiencyHighError" HistoNameLow="ElectronIdentificationEfficiencyLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="ElectronRecoEfficiency" HistoNameHigh="ElectronRecoEfficiencyHighError" HistoNameLow="ElectronRecoEfficiencyLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="ElectronTriggerSF" HistoNameHigh="ElectronTriggerSFHighError" HistoNameLow="ElectronTriggerSFLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="JetBTagJES" HistoNameHigh="JetBTagJESHighError" HistoNameLow="JetBTagJESLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="JetBTagSFEV1" HistoNameHigh="JetBTagSFEV1HighError" HistoNameLow="JetBTagSFEV1LowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="JetBTagSFEV2" HistoNameHigh="JetBTagSFEV2HighError" HistoNameLow="JetBTagSFEV2LowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="JetBTagSFEV3" HistoNameHigh="JetBTagSFEV3HighError" HistoNameLow="JetBTagSFEV3LowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="JetBTagSFEV4" HistoNameHigh="JetBTagSFEV4HighError" HistoNameLow="JetBTagSFEV4LowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="JetBTagSFEV5" HistoNameHigh="JetBTagSFEV5HighError" HistoNameLow="JetBTagSFEV5LowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="JetBTagSFEV6" HistoNameHigh="JetBTagSFEV6HighError" HistoNameLow="JetBTagSFEV6LowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="JetCTTagSF" HistoNameHigh="JetCTTagSFHighError" HistoNameLow="JetCTTagSFLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_1" HistoNameHigh="JetEnergyScaleEffectiveNP_1HighError" HistoNameLow="JetEnergyScaleEffectiveNP_1LowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_2" HistoNameHigh="JetEnergyScaleEffectiveNP_2HighError" HistoNameLow="JetEnergyScaleEffectiveNP_2LowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_3" HistoNameHigh="JetEnergyScaleEffectiveNP_3HighError" HistoNameLow="JetEnergyScaleEffectiveNP_3LowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_4" HistoNameHigh="JetEnergyScaleEffectiveNP_4HighError" HistoNameLow="JetEnergyScaleEffectiveNP_4LowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_5" HistoNameHigh="JetEnergyScaleEffectiveNP_5HighError" HistoNameLow="JetEnergyScaleEffectiveNP_5LowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_6restTerm" HistoNameHigh="JetEnergyScaleEffectiveNP_6restTermHighError" HistoNameLow="JetEnergyScaleEffectiveNP_6restTermLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="JetEnergyScaleEtaIntercalibration_Modelling" HistoNameHigh="JetEnergyScaleEtaIntercalibration_ModellingHighError" HistoNameLow="JetEnergyScaleEtaIntercalibration_ModellingLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="JetEnergyScaleEtaIntercalibration_StatAndMethod" HistoNameHigh="JetEnergyScaleEtaIntercalibration_StatAndMethodHighError" HistoNameLow="JetEnergyScaleEtaIntercalibration_StatAndMethodLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="JetEnergyScaleRelativeNonClosure_Pythia8" HistoNameHigh="JetEnergyScaleRelativeNonClosure_Pythia8HighError" HistoNameLow="JetEnergyScaleRelativeNonClosure_Pythia8LowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="JetEnergyScaleSingleParticle_HighPt" HistoNameHigh="JetEnergyScaleSingleParticle_HighPtHighError" HistoNameLow="JetEnergyScaleSingleParticle_HighPtLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="JetFlavorComp" HistoNameHigh="JetFlavorCompHighError" HistoNameLow="JetFlavorCompLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="JetFlavorResponse" HistoNameHigh="JetFlavorResponseHighError" HistoNameLow="JetFlavorResponseLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="JetMisTagSF" HistoNameHigh="JetMisTagSFHighError" HistoNameLow="JetMisTagSFLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="JetPileupMu" HistoNameHigh="JetPileupMuHighError" HistoNameLow="JetPileupMuLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="JetPileupNPV" HistoNameHigh="JetPileupNPVHighError" HistoNameLow="JetPileupNPVLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="JetPileupPt" HistoNameHigh="JetPileupPtHighError" HistoNameLow="JetPileupPtLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="JetPileupRhoTopo" HistoNameHigh="JetPileupRhoTopoHighError" HistoNameLow="JetPileupRhoTopoLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="JetResolution" HistoNameHigh="JetResolutionHighError" HistoNameLow="JetResolutionLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="JetVertexFraction" HistoNameHigh="JetVertexFractionHighError" HistoNameLow="JetVertexFractionLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="METSoftTermsResolution" HistoNameHigh="METSoftTermsResolutionHighError" HistoNameLow="METSoftTermsResolutionLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="METSoftTermsScale" HistoNameHigh="METSoftTermsScaleHighError" HistoNameLow="METSoftTermsScaleLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="MuonEfficiency" HistoNameHigh="MuonEfficiencyHighError" HistoNameLow="MuonEfficiencyLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="MuonMomentumID" HistoNameHigh="MuonMomentumIDHighError" HistoNameLow="MuonMomentumIDLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="MuonMomentumMS" HistoNameHigh="MuonMomentumMSHighError" HistoNameLow="MuonMomentumMSLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="MuonMomentumScale" HistoNameHigh="MuonMomentumScaleHighError" HistoNameLow="MuonMomentumScaleLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+      <HistoSys Name="MuonTriggerSF" HistoNameHigh="MuonTriggerSFHighError" HistoNameLow="MuonTriggerSFLowError" HistoPathHigh="ZZ/" HistoPathLow="ZZ/" />
+
+    </Sample>
+
+    <Sample Name="ttbarV" HistoPath="ttbarV/" NormalizeByTheory="True" HistoName="Central">
+      <StatError Activate="True" />
+      <!--<NormFactor Name="bkgdNorm" Val="1." Low="1." High="1."  />-->
+      
+      <HistoSys Name="ChargeMisID" HistoNameHigh="ChargeMisIDHighError" HistoNameLow="ChargeMisIDLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="ElectronEnergyScaleLowPt" HistoNameHigh="ElectronEnergyScaleLowPtHighError" HistoNameLow="ElectronEnergyScaleLowPtLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="ElectronEnergyScaleMaterial" HistoNameHigh="ElectronEnergyScaleMaterialHighError" HistoNameLow="ElectronEnergyScaleMaterialLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="ElectronEnergyScalePresampler" HistoNameHigh="ElectronEnergyScalePresamplerHighError" HistoNameLow="ElectronEnergyScalePresamplerLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="ElectronEnergyScaleZeeGen" HistoNameHigh="ElectronEnergyScaleZeeGenHighError" HistoNameLow="ElectronEnergyScaleZeeGenLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="ElectronEnergyScaleZeeMeth" HistoNameHigh="ElectronEnergyScaleZeeMethHighError" HistoNameLow="ElectronEnergyScaleZeeMethLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="ElectronEnergyScaleZeeStat" HistoNameHigh="ElectronEnergyScaleZeeStatHighError" HistoNameLow="ElectronEnergyScaleZeeStatLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="ElectronEnergySmearing" HistoNameHigh="ElectronEnergySmearingHighError" HistoNameLow="ElectronEnergySmearingLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="ElectronIdentificationEfficiency" HistoNameHigh="ElectronIdentificationEfficiencyHighError" HistoNameLow="ElectronIdentificationEfficiencyLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="ElectronRecoEfficiency" HistoNameHigh="ElectronRecoEfficiencyHighError" HistoNameLow="ElectronRecoEfficiencyLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="ElectronTriggerSF" HistoNameHigh="ElectronTriggerSFHighError" HistoNameLow="ElectronTriggerSFLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="JetBTagJES" HistoNameHigh="JetBTagJESHighError" HistoNameLow="JetBTagJESLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="JetBTagSFEV1" HistoNameHigh="JetBTagSFEV1HighError" HistoNameLow="JetBTagSFEV1LowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="JetBTagSFEV2" HistoNameHigh="JetBTagSFEV2HighError" HistoNameLow="JetBTagSFEV2LowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="JetBTagSFEV3" HistoNameHigh="JetBTagSFEV3HighError" HistoNameLow="JetBTagSFEV3LowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="JetBTagSFEV4" HistoNameHigh="JetBTagSFEV4HighError" HistoNameLow="JetBTagSFEV4LowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="JetBTagSFEV5" HistoNameHigh="JetBTagSFEV5HighError" HistoNameLow="JetBTagSFEV5LowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="JetBTagSFEV6" HistoNameHigh="JetBTagSFEV6HighError" HistoNameLow="JetBTagSFEV6LowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="JetCTTagSF" HistoNameHigh="JetCTTagSFHighError" HistoNameLow="JetCTTagSFLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_1" HistoNameHigh="JetEnergyScaleEffectiveNP_1HighError" HistoNameLow="JetEnergyScaleEffectiveNP_1LowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_2" HistoNameHigh="JetEnergyScaleEffectiveNP_2HighError" HistoNameLow="JetEnergyScaleEffectiveNP_2LowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_3" HistoNameHigh="JetEnergyScaleEffectiveNP_3HighError" HistoNameLow="JetEnergyScaleEffectiveNP_3LowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_4" HistoNameHigh="JetEnergyScaleEffectiveNP_4HighError" HistoNameLow="JetEnergyScaleEffectiveNP_4LowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_5" HistoNameHigh="JetEnergyScaleEffectiveNP_5HighError" HistoNameLow="JetEnergyScaleEffectiveNP_5LowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_6restTerm" HistoNameHigh="JetEnergyScaleEffectiveNP_6restTermHighError" HistoNameLow="JetEnergyScaleEffectiveNP_6restTermLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="JetEnergyScaleEtaIntercalibration_Modelling" HistoNameHigh="JetEnergyScaleEtaIntercalibration_ModellingHighError" HistoNameLow="JetEnergyScaleEtaIntercalibration_ModellingLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="JetEnergyScaleEtaIntercalibration_StatAndMethod" HistoNameHigh="JetEnergyScaleEtaIntercalibration_StatAndMethodHighError" HistoNameLow="JetEnergyScaleEtaIntercalibration_StatAndMethodLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="JetEnergyScaleRelativeNonClosure_Pythia8" HistoNameHigh="JetEnergyScaleRelativeNonClosure_Pythia8HighError" HistoNameLow="JetEnergyScaleRelativeNonClosure_Pythia8LowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="JetEnergyScaleSingleParticle_HighPt" HistoNameHigh="JetEnergyScaleSingleParticle_HighPtHighError" HistoNameLow="JetEnergyScaleSingleParticle_HighPtLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="JetFlavorComp" HistoNameHigh="JetFlavorCompHighError" HistoNameLow="JetFlavorCompLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="JetFlavorResponse" HistoNameHigh="JetFlavorResponseHighError" HistoNameLow="JetFlavorResponseLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="JetMisTagSF" HistoNameHigh="JetMisTagSFHighError" HistoNameLow="JetMisTagSFLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="JetPileupMu" HistoNameHigh="JetPileupMuHighError" HistoNameLow="JetPileupMuLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="JetPileupNPV" HistoNameHigh="JetPileupNPVHighError" HistoNameLow="JetPileupNPVLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="JetPileupPt" HistoNameHigh="JetPileupPtHighError" HistoNameLow="JetPileupPtLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="JetPileupRhoTopo" HistoNameHigh="JetPileupRhoTopoHighError" HistoNameLow="JetPileupRhoTopoLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="JetResolution" HistoNameHigh="JetResolutionHighError" HistoNameLow="JetResolutionLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="JetVertexFraction" HistoNameHigh="JetVertexFractionHighError" HistoNameLow="JetVertexFractionLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="METSoftTermsResolution" HistoNameHigh="METSoftTermsResolutionHighError" HistoNameLow="METSoftTermsResolutionLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="METSoftTermsScale" HistoNameHigh="METSoftTermsScaleHighError" HistoNameLow="METSoftTermsScaleLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="MuonEfficiency" HistoNameHigh="MuonEfficiencyHighError" HistoNameLow="MuonEfficiencyLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="MuonMomentumID" HistoNameHigh="MuonMomentumIDHighError" HistoNameLow="MuonMomentumIDLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="MuonMomentumMS" HistoNameHigh="MuonMomentumMSHighError" HistoNameLow="MuonMomentumMSLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="MuonMomentumScale" HistoNameHigh="MuonMomentumScaleHighError" HistoNameLow="MuonMomentumScaleLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+      <HistoSys Name="MuonTriggerSF" HistoNameHigh="MuonTriggerSFHighError" HistoNameLow="MuonTriggerSFLowError" HistoPathHigh="ttbarV/" HistoPathLow="ttbarV/" />
+
+    </Sample>
+    <Sample Name="VVV" HistoPath="VVV/" NormalizeByTheory="True" HistoName="Central">
+      <StatError Activate="True" />
+      <!--<NormFactor Name="bkgdNorm" Val="1." Low="1." High="1."  />-->
+      
+      <HistoSys Name="ChargeMisID" HistoNameHigh="ChargeMisIDHighError" HistoNameLow="ChargeMisIDLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="ElectronEnergyScaleLowPt" HistoNameHigh="ElectronEnergyScaleLowPtHighError" HistoNameLow="ElectronEnergyScaleLowPtLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="ElectronEnergyScaleMaterial" HistoNameHigh="ElectronEnergyScaleMaterialHighError" HistoNameLow="ElectronEnergyScaleMaterialLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="ElectronEnergyScalePresampler" HistoNameHigh="ElectronEnergyScalePresamplerHighError" HistoNameLow="ElectronEnergyScalePresamplerLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="ElectronEnergyScaleZeeGen" HistoNameHigh="ElectronEnergyScaleZeeGenHighError" HistoNameLow="ElectronEnergyScaleZeeGenLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="ElectronEnergyScaleZeeMeth" HistoNameHigh="ElectronEnergyScaleZeeMethHighError" HistoNameLow="ElectronEnergyScaleZeeMethLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="ElectronEnergyScaleZeeStat" HistoNameHigh="ElectronEnergyScaleZeeStatHighError" HistoNameLow="ElectronEnergyScaleZeeStatLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="ElectronEnergySmearing" HistoNameHigh="ElectronEnergySmearingHighError" HistoNameLow="ElectronEnergySmearingLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="ElectronIdentificationEfficiency" HistoNameHigh="ElectronIdentificationEfficiencyHighError" HistoNameLow="ElectronIdentificationEfficiencyLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="ElectronRecoEfficiency" HistoNameHigh="ElectronRecoEfficiencyHighError" HistoNameLow="ElectronRecoEfficiencyLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="ElectronTriggerSF" HistoNameHigh="ElectronTriggerSFHighError" HistoNameLow="ElectronTriggerSFLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="JetBTagJES" HistoNameHigh="JetBTagJESHighError" HistoNameLow="JetBTagJESLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="JetBTagSFEV1" HistoNameHigh="JetBTagSFEV1HighError" HistoNameLow="JetBTagSFEV1LowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="JetBTagSFEV2" HistoNameHigh="JetBTagSFEV2HighError" HistoNameLow="JetBTagSFEV2LowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="JetBTagSFEV3" HistoNameHigh="JetBTagSFEV3HighError" HistoNameLow="JetBTagSFEV3LowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="JetBTagSFEV4" HistoNameHigh="JetBTagSFEV4HighError" HistoNameLow="JetBTagSFEV4LowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="JetBTagSFEV5" HistoNameHigh="JetBTagSFEV5HighError" HistoNameLow="JetBTagSFEV5LowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="JetBTagSFEV6" HistoNameHigh="JetBTagSFEV6HighError" HistoNameLow="JetBTagSFEV6LowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="JetCTTagSF" HistoNameHigh="JetCTTagSFHighError" HistoNameLow="JetCTTagSFLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_1" HistoNameHigh="JetEnergyScaleEffectiveNP_1HighError" HistoNameLow="JetEnergyScaleEffectiveNP_1LowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_2" HistoNameHigh="JetEnergyScaleEffectiveNP_2HighError" HistoNameLow="JetEnergyScaleEffectiveNP_2LowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_3" HistoNameHigh="JetEnergyScaleEffectiveNP_3HighError" HistoNameLow="JetEnergyScaleEffectiveNP_3LowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_4" HistoNameHigh="JetEnergyScaleEffectiveNP_4HighError" HistoNameLow="JetEnergyScaleEffectiveNP_4LowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_5" HistoNameHigh="JetEnergyScaleEffectiveNP_5HighError" HistoNameLow="JetEnergyScaleEffectiveNP_5LowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_6restTerm" HistoNameHigh="JetEnergyScaleEffectiveNP_6restTermHighError" HistoNameLow="JetEnergyScaleEffectiveNP_6restTermLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="JetEnergyScaleEtaIntercalibration_Modelling" HistoNameHigh="JetEnergyScaleEtaIntercalibration_ModellingHighError" HistoNameLow="JetEnergyScaleEtaIntercalibration_ModellingLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="JetEnergyScaleEtaIntercalibration_StatAndMethod" HistoNameHigh="JetEnergyScaleEtaIntercalibration_StatAndMethodHighError" HistoNameLow="JetEnergyScaleEtaIntercalibration_StatAndMethodLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="JetEnergyScaleRelativeNonClosure_Pythia8" HistoNameHigh="JetEnergyScaleRelativeNonClosure_Pythia8HighError" HistoNameLow="JetEnergyScaleRelativeNonClosure_Pythia8LowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="JetEnergyScaleSingleParticle_HighPt" HistoNameHigh="JetEnergyScaleSingleParticle_HighPtHighError" HistoNameLow="JetEnergyScaleSingleParticle_HighPtLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="JetFlavorComp" HistoNameHigh="JetFlavorCompHighError" HistoNameLow="JetFlavorCompLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="JetFlavorResponse" HistoNameHigh="JetFlavorResponseHighError" HistoNameLow="JetFlavorResponseLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="JetMisTagSF" HistoNameHigh="JetMisTagSFHighError" HistoNameLow="JetMisTagSFLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="JetPileupMu" HistoNameHigh="JetPileupMuHighError" HistoNameLow="JetPileupMuLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="JetPileupNPV" HistoNameHigh="JetPileupNPVHighError" HistoNameLow="JetPileupNPVLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="JetPileupPt" HistoNameHigh="JetPileupPtHighError" HistoNameLow="JetPileupPtLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="JetPileupRhoTopo" HistoNameHigh="JetPileupRhoTopoHighError" HistoNameLow="JetPileupRhoTopoLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="JetResolution" HistoNameHigh="JetResolutionHighError" HistoNameLow="JetResolutionLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="JetVertexFraction" HistoNameHigh="JetVertexFractionHighError" HistoNameLow="JetVertexFractionLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="METSoftTermsResolution" HistoNameHigh="METSoftTermsResolutionHighError" HistoNameLow="METSoftTermsResolutionLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="METSoftTermsScale" HistoNameHigh="METSoftTermsScaleHighError" HistoNameLow="METSoftTermsScaleLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="MuonEfficiency" HistoNameHigh="MuonEfficiencyHighError" HistoNameLow="MuonEfficiencyLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="MuonMomentumID" HistoNameHigh="MuonMomentumIDHighError" HistoNameLow="MuonMomentumIDLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="MuonMomentumMS" HistoNameHigh="MuonMomentumMSHighError" HistoNameLow="MuonMomentumMSLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="MuonMomentumScale" HistoNameHigh="MuonMomentumScaleHighError" HistoNameLow="MuonMomentumScaleLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+      <HistoSys Name="MuonTriggerSF" HistoNameHigh="MuonTriggerSFHighError" HistoNameLow="MuonTriggerSFLowError" HistoPathHigh="VVV/" HistoPathLow="VVV/" />
+
+    </Sample>
+    <Sample Name="Fake" HistoPath="FakeMC/" NormalizeByTheory="True" HistoName="Central">
+      <StatError Activate="True" />
+      <!--<NormFactor Name="bkgdNorm" Val="1." Low="1." High="1."  />-->
+      
+      <HistoSys Name="ChargeMisID" HistoNameHigh="ChargeMisIDHighError" HistoNameLow="ChargeMisIDLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="ElectronEnergyScaleLowPt" HistoNameHigh="ElectronEnergyScaleLowPtHighError" HistoNameLow="ElectronEnergyScaleLowPtLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="ElectronEnergyScaleMaterial" HistoNameHigh="ElectronEnergyScaleMaterialHighError" HistoNameLow="ElectronEnergyScaleMaterialLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="ElectronEnergyScalePresampler" HistoNameHigh="ElectronEnergyScalePresamplerHighError" HistoNameLow="ElectronEnergyScalePresamplerLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="ElectronEnergyScaleZeeGen" HistoNameHigh="ElectronEnergyScaleZeeGenHighError" HistoNameLow="ElectronEnergyScaleZeeGenLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="ElectronEnergyScaleZeeMeth" HistoNameHigh="ElectronEnergyScaleZeeMethHighError" HistoNameLow="ElectronEnergyScaleZeeMethLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="ElectronEnergyScaleZeeStat" HistoNameHigh="ElectronEnergyScaleZeeStatHighError" HistoNameLow="ElectronEnergyScaleZeeStatLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="ElectronEnergySmearing" HistoNameHigh="ElectronEnergySmearingHighError" HistoNameLow="ElectronEnergySmearingLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="ElectronIdentificationEfficiency" HistoNameHigh="ElectronIdentificationEfficiencyHighError" HistoNameLow="ElectronIdentificationEfficiencyLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="ElectronRecoEfficiency" HistoNameHigh="ElectronRecoEfficiencyHighError" HistoNameLow="ElectronRecoEfficiencyLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="ElectronTriggerSF" HistoNameHigh="ElectronTriggerSFHighError" HistoNameLow="ElectronTriggerSFLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="JetBTagJES" HistoNameHigh="JetBTagJESHighError" HistoNameLow="JetBTagJESLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="JetBTagSFEV1" HistoNameHigh="JetBTagSFEV1HighError" HistoNameLow="JetBTagSFEV1LowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="JetBTagSFEV2" HistoNameHigh="JetBTagSFEV2HighError" HistoNameLow="JetBTagSFEV2LowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="JetBTagSFEV3" HistoNameHigh="JetBTagSFEV3HighError" HistoNameLow="JetBTagSFEV3LowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="JetBTagSFEV4" HistoNameHigh="JetBTagSFEV4HighError" HistoNameLow="JetBTagSFEV4LowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="JetBTagSFEV5" HistoNameHigh="JetBTagSFEV5HighError" HistoNameLow="JetBTagSFEV5LowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="JetBTagSFEV6" HistoNameHigh="JetBTagSFEV6HighError" HistoNameLow="JetBTagSFEV6LowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="JetCTTagSF" HistoNameHigh="JetCTTagSFHighError" HistoNameLow="JetCTTagSFLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_1" HistoNameHigh="JetEnergyScaleEffectiveNP_1HighError" HistoNameLow="JetEnergyScaleEffectiveNP_1LowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_2" HistoNameHigh="JetEnergyScaleEffectiveNP_2HighError" HistoNameLow="JetEnergyScaleEffectiveNP_2LowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_3" HistoNameHigh="JetEnergyScaleEffectiveNP_3HighError" HistoNameLow="JetEnergyScaleEffectiveNP_3LowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_4" HistoNameHigh="JetEnergyScaleEffectiveNP_4HighError" HistoNameLow="JetEnergyScaleEffectiveNP_4LowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_5" HistoNameHigh="JetEnergyScaleEffectiveNP_5HighError" HistoNameLow="JetEnergyScaleEffectiveNP_5LowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="JetEnergyScaleEffectiveNP_6restTerm" HistoNameHigh="JetEnergyScaleEffectiveNP_6restTermHighError" HistoNameLow="JetEnergyScaleEffectiveNP_6restTermLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="JetEnergyScaleEtaIntercalibration_Modelling" HistoNameHigh="JetEnergyScaleEtaIntercalibration_ModellingHighError" HistoNameLow="JetEnergyScaleEtaIntercalibration_ModellingLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="JetEnergyScaleEtaIntercalibration_StatAndMethod" HistoNameHigh="JetEnergyScaleEtaIntercalibration_StatAndMethodHighError" HistoNameLow="JetEnergyScaleEtaIntercalibration_StatAndMethodLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="JetEnergyScaleRelativeNonClosure_Pythia8" HistoNameHigh="JetEnergyScaleRelativeNonClosure_Pythia8HighError" HistoNameLow="JetEnergyScaleRelativeNonClosure_Pythia8LowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="JetEnergyScaleSingleParticle_HighPt" HistoNameHigh="JetEnergyScaleSingleParticle_HighPtHighError" HistoNameLow="JetEnergyScaleSingleParticle_HighPtLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="JetFlavorComp" HistoNameHigh="JetFlavorCompHighError" HistoNameLow="JetFlavorCompLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="JetFlavorResponse" HistoNameHigh="JetFlavorResponseHighError" HistoNameLow="JetFlavorResponseLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="JetMisTagSF" HistoNameHigh="JetMisTagSFHighError" HistoNameLow="JetMisTagSFLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="JetPileupMu" HistoNameHigh="JetPileupMuHighError" HistoNameLow="JetPileupMuLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="JetPileupNPV" HistoNameHigh="JetPileupNPVHighError" HistoNameLow="JetPileupNPVLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="JetPileupPt" HistoNameHigh="JetPileupPtHighError" HistoNameLow="JetPileupPtLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="JetPileupRhoTopo" HistoNameHigh="JetPileupRhoTopoHighError" HistoNameLow="JetPileupRhoTopoLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="JetResolution" HistoNameHigh="JetResolutionHighError" HistoNameLow="JetResolutionLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="JetVertexFraction" HistoNameHigh="JetVertexFractionHighError" HistoNameLow="JetVertexFractionLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="METSoftTermsResolution" HistoNameHigh="METSoftTermsResolutionHighError" HistoNameLow="METSoftTermsResolutionLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="METSoftTermsScale" HistoNameHigh="METSoftTermsScaleHighError" HistoNameLow="METSoftTermsScaleLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="MuonEfficiency" HistoNameHigh="MuonEfficiencyHighError" HistoNameLow="MuonEfficiencyLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="MuonMomentumID" HistoNameHigh="MuonMomentumIDHighError" HistoNameLow="MuonMomentumIDLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="MuonMomentumMS" HistoNameHigh="MuonMomentumMSHighError" HistoNameLow="MuonMomentumMSLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="MuonMomentumScale" HistoNameHigh="MuonMomentumScaleHighError" HistoNameLow="MuonMomentumScaleLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+      <HistoSys Name="MuonTriggerSF" HistoNameHigh="MuonTriggerSFHighError" HistoNameLow="MuonTriggerSFLowError" HistoPathHigh="FakeMC/" HistoPathLow="FakeMC/" />
+
+    </Sample>
+  </Channel>

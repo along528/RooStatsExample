@@ -1,0 +1,54 @@
+<!--
+    The single channel config file for RSG->hh->bbbb
+    only taking into account qcd and ttbar and the qcd shape syst
+
+    NormalizeByTheory: scale by the luminosity and its error (we use Lumi=1.0 and its rel. err)
+
+    Note: Config.dtd needs to be accessible.  It can be found in ROOT release area.  
+    The file system path is relative to location of this XML file, not the executable.
+-->
+
+<!DOCTYPE Channel  SYSTEM 'HistFactorySchema.dtd'>
+
+  <!-- There is some weird crash if I put a number in the Channel Name (e.g. 1SFOS) -->
+  <Channel Name="OneSFOS" InputFile="Input_1SFOS.root" >
+    <!-- Data is set to background -->
+    <Data HistoPath="SignalPlusBackground_MCFake/" HistoName="Central" />  
+
+
+    <!-- Set the StatError type to Poisson.  Can also be Gaussian -->
+    <StatErrorConfig RelErrorThreshold="0.01" ConstraintType="Poisson" />
+
+    <Sample Name="SIGNAL" HistoPath="Signal/" HistoName="Central" NormalizeByTheory="True" >
+      <StatError Activate="True" />
+      <!--<OverallSys Name="b_tag_sf" High="1.26" Low="0.74"/>-->
+      <!-- Should this be set so that Const="True" ? -->
+      <NormFactor Name="NormFactorToPrediction" Val="1." Low="-15." High="30." Const="True" />
+
+    </Sample>
+
+    <Sample Name="WZ" HistoPath="WZ/" NormalizeByTheory="True" HistoName="Central">
+      <StatError Activate="True" />
+
+    </Sample>
+
+    <Sample Name="ZZ" HistoPath="ZZ/" NormalizeByTheory="True" HistoName="Central">
+      <StatError Activate="True" />
+
+    </Sample>
+
+    <Sample Name="ttbarV" HistoPath="ttbarV/" NormalizeByTheory="True" HistoName="Central">
+      <StatError Activate="True" />
+
+    </Sample>
+    <Sample Name="VVV" HistoPath="VVV/" NormalizeByTheory="True" HistoName="Central">
+      <StatError Activate="True" />
+      <!--<NormFactor Name="bkgdNorm" Val="1." Low="1." High="1."  />-->
+      
+
+    </Sample>
+    <Sample Name="Fake" HistoPath="FakeMC/" NormalizeByTheory="True" HistoName="Central">
+      <StatError Activate="True" />
+
+    </Sample>
+  </Channel>

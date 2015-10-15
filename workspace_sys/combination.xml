@@ -1,0 +1,25 @@
+<!--
+    This is the input file to the executable.
+
+    Note: Config.dtd needs to be accessible.  It can be found in ROOT release area.  
+    The file system path is relative to location of this XML file, not the executable.
+-->
+
+<!DOCTYPE Combination  SYSTEM 'HistFactorySchema.dtd'>
+
+<Combination OutputFilePrefix="Workspace" >
+
+
+  
+<Input>./Channel_0SFOS.xml</Input>
+<Input>./Channel_1SFOS.xml</Input>
+<Input>./Channel_2SFOS.xml</Input>
+
+
+  <!-- setting relative error on luminosity exactly to zero creates problems -->
+  <Measurement Name="GaussExample" Lumi="1" LumiRelErr="0.028" ExportOnly="True" BinLow="0" BinHigh="1" Mode="comb"> 
+    <POI>NormFactorToPrediction</POI>
+    <!-- don't need <ConstraintTerm> default is Gaussian with an exponential interpolation for normalization factors (LHC HCG default)-->
+  </Measurement>
+
+</Combination>
