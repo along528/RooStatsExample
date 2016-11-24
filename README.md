@@ -1,4 +1,4 @@
-# Extracting Profile Likelihood
+# Statistical Analysis Example
 To set things up do:
 
 
