@@ -1,9 +1,9 @@
 # Statistical Analysis Example
-To set things up do:
+To set things up do the following.
 
-#necessary every time login to new shell
+Necessary every time login to new shell:
 source setup.sh 
-#only need to run once if code/ directory not modified
+Only need to run once if code/ directory not modified:
 source build.sh 
 
 Then to run the examples do:
